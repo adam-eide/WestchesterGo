@@ -1,0 +1,79 @@
+<div class="card">
+    <div class='card-header'>
+        {{pageTitle}}: {{raidFilter}} {{raidFilter == 'By Event' ? '- '+ eventFilter : ''}}
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+                <div *ngFor='let filter of filterTypes'>
+                    <button class='btn btn-primary'
+                    style="margin-right: 2px;"
+                    (click)='selectRaidFilter(filter)'
+                    *ngIf='filter==raidFilter'>
+                      {{filter}}
+                    </button>
+                    <button class='btn btn-secondary'
+                    style="margin-right: 2px;"
+                    (click)='selectRaidFilter(filter)'
+                    *ngIf='filter!==raidFilter'>
+                      {{filter}}
+                    </button>
+                </div>
+        </div>
+        <div class="row justify-content-center" style="padding-top: 5px;" *ngIf='raidFilter == filterTypes[1]'>
+            <button class="btn btn-outline-secondary" (click)='toggleEventList()'>Choose an event</button>
+        </div>
+        <div class="row justify-content-center" style="padding-top: 5px;" *ngIf='raidFilter == filterTypes[1] && eventsExpanded'>
+            <div *ngFor='let event of events'>
+                <button class="btn btn-outline-secondary" style="margin-right: 2px;" (click)='eventFilter=event'>{{event}}</button>
+            </div>
+        </div>
+        <div class="row justify-content-center align-content-center" style="padding-top: 5px;"  *ngIf='raidFilter == filterTypes[2]'>
+            <div style="padding-top: 3px;">
+                <pre>Enter Pokemon: </pre>
+            </div>
+            <div>
+                <input type='text' [(ngModel)]='pokemonFilter'>
+            </div>
+        </div>
+        <div class='table-responsive' *ngIf='raidFilter==filterTypes[0]'>
+        <table class="table" *ngIf='raids&&raids.length'>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Total</th>
+                    <th>Caught</th>
+                    <th>Shiny</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let raid of raidTotals">
+                    <td>{{raid.stars}} Star</td>
+                    <td>{{raid.total}}</td>
+                    <td>{{raid.caught}} ({{raid.caught * 100 / raid.total | number:'1.0-0'}}%)</td>
+                    <td>{{((raid.shiny < 0) ? 0 : raid.shiny)}} ({{((raid.shiny < 0) ? 0 : raid.shiny) * 100 / raid.total | number:'1.0-0'}}%)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class='table-responsive' *ngIf='raidFilter!==filterTypes[0]'>
+            <table class="table" *ngIf='raids&&raids.length'>
+                <thead>
+                    <tr>
+                        <th>Pokemon</th>
+                        <th>Total</th>
+                        <th>Caught</th>
+                        <th>Shiny</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let raid of filteredRaids'>
+                        <td>{{raid.pokemon}} ({{raid.stars}}&#11088;)</td>
+                        <td>{{raid.total}}</td>
+                        <td>{{raid.caught}} ({{raid.caught * 100 / raid.total | number:'1.0-0'}}%)</td>
+                        <td>{{((raid.shiny < 0) ? 0 : raid.shiny)}} ({{((raid.shiny < 0) ? 0 : raid.shiny) * 100 / raid.total | number:'1.0-0'}}%)</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+</div>

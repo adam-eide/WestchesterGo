@@ -1,0 +1,61 @@
+<div class="card">
+    <div class='card-header'>
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        <div class="justify-content-center">
+                <form >
+                    <div class="row" style="margin-bottom: 3px;">
+                        <div class="d-flex justify-content-end col-2" style="margin-right: 6px;">
+                        <label >Stars</label>
+                    </div>
+                        <select (change)="starSelect($event)" class="col-6"  required>
+                            <option *ngFor="let s of starList" [value]="s" [selected]="stars === s" >{{s}}</option>
+                        </select>
+                    </div>
+                    <div class="row" style="margin-bottom: 3px;">
+                        <div class="d-flex justify-content-end col-2 " style="margin-right: 6px;">
+                            <label  >Name</label>
+                        </div>
+                    <input name="nameText" [(ngModel)]='name' class="col-6"/>
+                </div>
+                    <div class="row d-flex" style="margin-bottom: 3px;">
+                        <div class="d-flex justify-content-end col-2" style="margin-right: 6px;">
+                            <label >Event</label>
+                        </div>
+                    <input class="col-6" name="eventText" [(ngModel)]="event" [disabled]="eventLocked"/>
+                    <button class="btn btn-secondary col-3" (click)="toggleEventLock()" *ngIf="eventLocked">Unlock</button>
+                </div>
+                    <div class="row" style="margin-bottom: 3px;">
+                        <div class="d-flex justify-content-end col-2" style="margin-right: 6px;">
+                            <label >Shiny?</label>
+                        </div>
+                        <select (change)="shinySelect($event)" class="col-6"  required>
+                            <option [value]="'Yes'" [selected]="canBeShiny === true" >Yes</option>
+                            <option [value]="'No'" [selected]="canBeShiny === false" >No</option>
+                        </select>
+                </div><div class="row" style="margin-top: 10px;">
+                    <div class="col-2"></div>
+                    <button class="btn btn-primary col-6" (click)='postRaid()'>OK</button>
+                </div>
+                </form>
+        </div>
+        
+    </div>
+</div>
+<div class="card" style="margin-top: 8px;">
+    <div class='card-header'>
+        Raid Event Names
+    </div>
+    <div class="card-body">
+        <table class="table-sm">
+            <tbody >
+            <tr *ngFor='let e of eventList'>
+                <td>{{e}}</td>
+            </tr>
+        </tbody>
+        </table>
+        
+    </div>
+
+</div>

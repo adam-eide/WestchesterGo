@@ -1,0 +1,52 @@
+<div class="card">
+    <div class='card-header'>
+        {{pageTitle}}: {{eggFilter}} {{eggFilter == '7km' ? '- '+ eventFilter : ''}}
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div *ngFor='let filter of filterTypes'>
+                <button class='btn btn-primary'
+                style="margin-right: 2px;"
+                (click)='selectEggFilter(filter)'
+                *ngIf='filter==eggFilter'>
+                  {{filter}}
+                </button>
+                <button class='btn btn-secondary'
+                style="margin-right: 2px;"
+                (click)='selectEggFilter(filter)'
+                *ngIf='filter!==eggFilter'>
+                  {{filter}}
+                </button>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="padding-top: 5px;" *ngIf='eggFilter == filterTypes[2]'>
+            <button class="btn btn-outline-secondary" (click)='toggleEventList()'>Choose an event</button>
+        </div>
+        <div class="row justify-content-center" style="padding-top: 5px;" *ngIf='eggFilter == filterTypes[2] && eventsExpanded'>
+            <div *ngFor='let event of events'>
+                <button class="btn btn-outline-secondary" style="margin-right: 2px;" (click)='eventFilter=event'>{{event}}</button>
+            </div>
+        </div>
+        <div class='table-responsive' >
+            <table class="table" *ngIf='eggs&&eggs.length'>
+                <thead>
+                    <tr>
+                        <th>Pokemon</th>
+                        <th>Hatched</th>
+                        <th>Shiny</th>
+                        <th>Hatch Odds</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let egg of filteredEggs'>
+                        <td>{{egg.name}}</td>
+                        <td>{{egg.hatched}}</td>
+                        <td>{{egg.shiny}} ({{egg.shiny * 100 / egg.hatched | number:'1.0-0'}}%)</td>
+                        <td>{{egg.hatched * 100 / getTotalEggsInPool() |  number:'1.0-0'}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+            
+    </div>
+</div>

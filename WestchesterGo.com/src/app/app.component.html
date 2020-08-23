@@ -1,0 +1,11 @@
+<div class='d-flex justify-content-center bg-light'>{{pageTitle}}</div>
+<nav class='navbar navbar-expand navbar-light bg-light'>
+  <ul class='nav nav-pills'>
+    <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/raids']">Raids</a></li>
+    <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/eggs']">Eggs</a></li>
+    <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/about']">About</a></li>
+  </ul>
+</nav>
+<div class='container'>
+<router-outlet></router-outlet>
+</div>

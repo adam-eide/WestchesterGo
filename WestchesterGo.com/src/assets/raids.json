@@ -1,0 +1,20 @@
+[
+  {
+    "raidID": 1,
+    "stars": 5,
+    "pokemon": "deoxys",
+    "total": 4,
+    "caught": 3,
+    "shiny": 1,
+    "eventName": "Enigma2020"
+  },
+  {
+    "raidID": 2,
+    "stars": 2,
+    "pokemon": "unown",
+    "total": 6,
+    "caught": 6,
+    "shiny": 0,
+    "eventName": "Enigma2020"
+  }
+]
