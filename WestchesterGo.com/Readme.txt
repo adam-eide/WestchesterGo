@@ -1,3 +1,5 @@
+This is the main website, it displays the data collected from the telegram bot.
+
 This is my Angular version, if you ng new westchester-data and then paste the src folder it should build
 
 Angular CLI: 10.0.7
