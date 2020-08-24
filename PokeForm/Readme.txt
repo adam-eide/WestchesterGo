@@ -1,3 +1,5 @@
+This is a website that lets me add new raids and eggs to the database.
+
 This is my Angular version, if you ng new PokeForm and then paste the src folder it should build
 
 Angular CLI: 10.0.7

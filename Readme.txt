@@ -1,5 +1,6 @@
 This is my project for tracking local Pokemon Go data. 
-westchestergo.com
+See data at westchestergo.com
+Enter data at https://t.me/WestchesterGoBot (Telegram bot)
 The PokeForm page is not publicly accessible
 
 
