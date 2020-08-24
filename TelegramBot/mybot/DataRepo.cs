@@ -144,7 +144,7 @@ namespace mybot
             con.Open();
 
             var q = @"INSERT INTO TempEggs (PlayerID, EggID, Distance, Name, Shiny) VALUES (" +
-                playerID + ", " + eggID + ", " + size + ", '" + GetEggName(eggID) + "', " +
+                playerID + ", " + eggID + ", " + size + ", '" + GetEggName(eggID).Replace("'", "''") + "', " +
                 ((shiny) ? "1" : "0") + ")";
             con.Execute(q);
         }
