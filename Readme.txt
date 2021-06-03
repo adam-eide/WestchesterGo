@@ -1,3 +1,5 @@
+My AWS trial is over in July 2021 so this project will be taken offline soon.
+
 This is my project for tracking local Pokemon Go data. 
 See data at westchestergo.com
 Enter data at https://t.me/WestchesterGoBot (Telegram bot)
